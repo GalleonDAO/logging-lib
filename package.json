@@ -1,0 +1,70 @@
+{
+  "name": "@galleondao/logging-lib",
+  "version": "0.0.1",
+  "description": "typescript logging library for application",
+  "main": "./build/cjs/index.js",
+  "types": "./build/cjs/index.d.ts",
+  "module": "./build/esm/index.js",
+  "files": [
+    "build/"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "gts lint",
+    "clean": "rimraf build",
+    "commit": "git-cz",
+    "compile:esm": "tsc -p tsconfig.esm.json",
+    "compile:cjs": "tsc -p tsconfig.cjs.json",
+    "fix": "gts fix",
+    "prepare": "npm run build",
+    "posttest": "npm run lint",
+    "build": "npm run compile:esm && npm run compile:cjs",
+    "semantic-release": "semantic-release --branches main",
+    "acp": "git add . && npm run commit && git push"
+  },
+  "keywords": [
+    "npm",
+    "example",
+    "react",
+    "hooks",
+    "commonjs",
+    "es6"
+  ],
+  "homepage": "https://github.com/GalleonDAO/logging-lib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GalleonDAO/logging-lib"
+  },
+  "bugs": {
+    "url": "https://github.com/GalleonDAO/logging-lib/issues"
+  },
+  "author": {
+    "name": "Andrew",
+    "email": "hello@galleon.community",
+    "url": "https://galleon.community"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14",
+    "cz-conventional-changelog": "^3.3.0",
+    "gts": "^3",
+    "jest": "^27",
+    "prettier": "^2",
+    "rimraf": "^3",
+    "semantic-release": "^18.0.1",
+    "ts-jest": "^27",
+    "typescript": "^4.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
