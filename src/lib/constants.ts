@@ -1,5 +1,3 @@
-export const GALLEON_SERVICE = 'GALLEON'
-
 export const LOG_SEVERITY = {
   DEBUG: 'Debug',
   INFO: 'Info',
@@ -9,11 +7,16 @@ export const LOG_SEVERITY = {
 }
 
 export const KNOWN_SERVICES = {
-  GALLEON: 'GALLEON',
+  GALLEON_UI: 'GALLEON_UI',
+  GALLEON_DAPP: 'GALLEON_DAPP',
+  CURSED_PIRATES_UI: 'CURSED_PIRATES_UI',
+  FDC_UI: 'GALLEON_UI',
 }
 
-export const LABELS = {
+export const KNOWN_LABELS = {
   VISIT: 'VISIT',
+  SUBMIT_PITCH: 'SUBMIT_PITCH',
+  CONTACT_US: 'CONTACT US'
 }
 
 export const SUBSCRIPTION_HEADER_KEY = 'Ocp-Apim-Subscription-Key'
