@@ -20,5 +20,5 @@ interface CounterPayload {
   serviceName: string
   environment: string
   label: string
-  metadata: object
+  metadata?: object
 }
