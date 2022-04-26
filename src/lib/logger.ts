@@ -2,6 +2,7 @@ import {
   BASE_URL,
   COUNTERS_ENDPOINT,
   LOGS_ENDPOINT,
+  LOG_SEVERITY,
   SUBSCRIPTION_HEADER_KEY,
   TIMERS_ENDPOINT,
   TRACE_KEY,
@@ -36,6 +37,16 @@ class Logger {
       }),
     }).catch((err) => {
       console.log(err)
+      this.logMessage({
+        serviceName: payload.serviceName,
+        environment: payload.environment,
+        timestamp: new Date().toISOString(),
+        severity: LOG_SEVERITY.ERROR,
+        functionName: 'logMessage',
+        exception: err.stack,
+        message: err.message,
+        correlationId: undefined,
+      })
     })
   }
 
@@ -52,6 +63,16 @@ class Logger {
       }),
     }).catch((err) => {
       console.log(err)
+      this.logMessage({
+        serviceName: payload.serviceName,
+        environment: payload.environment,
+        timestamp: new Date().toISOString(),
+        severity: LOG_SEVERITY.ERROR,
+        functionName: 'logCounter',
+        exception: err.stack,
+        message: err.message,
+        correlationId: undefined,
+      })
     })
   }
 
@@ -68,6 +89,16 @@ class Logger {
       }),
     }).catch((err) => {
       console.log(err)
+      this.logMessage({
+        serviceName: payload.serviceName,
+        environment: payload.environment,
+        timestamp: new Date().toISOString(),
+        severity: LOG_SEVERITY.ERROR,
+        functionName: 'logTimer',
+        exception: err.stack,
+        message: err.message,
+        correlationId: undefined,
+      })
     })
   }
 }
