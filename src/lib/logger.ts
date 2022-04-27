@@ -45,7 +45,7 @@ class Logger {
         functionName: 'logMessage',
         exception: err.stack,
         message: err.message,
-        correlationId: undefined,
+        correlationId: payload.correlationId,
       })
     })
   }
