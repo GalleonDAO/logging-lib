@@ -36,8 +36,7 @@ class Logger {
         CorrelationID: payload.correlationId,
       }),
     }).catch((err) => {
-      console.log(err)
-      this.logMessage({
+      console.log(err, {
         serviceName: payload.serviceName,
         environment: payload.environment,
         timestamp: new Date().toISOString(),
