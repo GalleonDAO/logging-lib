@@ -22,3 +22,17 @@ interface CounterPayload {
   label: string
   metadata?: object
 }
+
+interface ILoggingTransport {
+  logMessageAsync(payload:MessagePayload)
+  logCounterAsync(payload:CounterPayload)
+  logTimerAsync(payload:TimerPayload)
+}
+
+interface MonitoringOptions {
+  loggerUrl : string
+  logsEndpoint : string
+  countersEndpoint : string
+  timersEndpoint : string
+  headers: HeadersInit
+}
