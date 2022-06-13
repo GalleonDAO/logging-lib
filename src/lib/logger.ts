@@ -15,6 +15,7 @@ class Logger {
     this.headers.set(SUBSCRIPTION_HEADER_KEY, this.key)
     this.headers.set(TRACE_KEY, true.toString())
     this.headers.set('Content-Type', 'application/json')
+    this.transports = []
 
     this.transports.push(new MonitoringAPITransport({
       loggerUrl: BASE_URL,

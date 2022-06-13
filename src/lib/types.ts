@@ -24,9 +24,9 @@ interface CounterPayload {
 }
 
 interface ILoggingTransport {
-  logMessageAsync(payload:MessagePayload)
-  logCounterAsync(payload:CounterPayload)
-  logTimerAsync(payload:TimerPayload)
+  logMessageAsync(payload:MessagePayload) : any
+  logCounterAsync(payload:CounterPayload) : any
+  logTimerAsync(payload:TimerPayload) : any
 }
 
 interface MonitoringOptions {
