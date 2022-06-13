@@ -2,13 +2,13 @@ import { LOG_SEVERITY } from "./constants";
 
 class ConsoleTransport implements ILoggingTransport {
     logMessageAsync(payload: MessagePayload) {
-        console.log(`LOGGING MESSAGE: ${payload}`);
+        console.log(`LOGGING MESSAGE: ${JSON.stringify(payload)}`);
     }
     logCounterAsync(payload: CounterPayload) {
-        console.log(`LOGGING COUNTER: ${payload}`);
+        console.log(`LOGGING COUNTER: ${JSON.stringify(payload)}`);
     }
     logTimerAsync(payload: TimerPayload) {
-        console.log(`LOGGING TIMER: ${payload}`);
+        console.log(`LOGGING TIMER: ${JSON.stringify(payload)}`);
     }
 }
 
