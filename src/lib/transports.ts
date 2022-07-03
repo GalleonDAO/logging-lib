@@ -1,4 +1,4 @@
-import { LOG_SEVERITY } from "./constants";
+import { LOG_SEVERITY, SUBSCRIPTION_HEADER_KEY, TRACE_KEY } from "./constants";
 
 class ConsoleTransport implements ILoggingTransport {
   logMessageAsync(payload: MessagePayload) {
@@ -14,8 +14,14 @@ class ConsoleTransport implements ILoggingTransport {
 
 class MonitoringAPITransport implements ILoggingTransport {
   options: MonitoringOptions;
+  headers: HeadersInit;
 
   constructor(options: MonitoringOptions) {
+    this.headers = new Headers();
+    this.headers.set(SUBSCRIPTION_HEADER_KEY, options.apiKey);
+    this.headers.set(TRACE_KEY, true.toString());
+    this.headers.set("Content-Type", "application/json");
+
     this.options = options;
   }
 
@@ -23,7 +29,7 @@ class MonitoringAPITransport implements ILoggingTransport {
     const loggerUrl = this.options.loggerUrl + this.options.logsEndpoint;
     return await fetch(loggerUrl, {
       method: "POST",
-      headers: this.options.headers,
+      headers: this.headers,
       body: JSON.stringify({
         ServiceName: payload.serviceName,
         Environment: payload.environment,
@@ -51,7 +57,7 @@ class MonitoringAPITransport implements ILoggingTransport {
     const loggerUrl = this.options.loggerUrl + this.options.countersEndpoint;
     return await fetch(loggerUrl, {
       method: "POST",
-      headers: this.options.headers,
+      headers: this.headers,
       body: JSON.stringify({
         ServiceName: payload.serviceName,
         Environment: payload.environment,
@@ -76,7 +82,7 @@ class MonitoringAPITransport implements ILoggingTransport {
     const loggerUrl = this.options.loggerUrl + this.options.timersEndpoint;
     return await fetch(loggerUrl, {
       method: "POST",
-      headers: this.options.headers,
+      headers: this.headers,
       body: JSON.stringify({
         ServiceName: payload.serviceName,
         Environment: payload.environment,
