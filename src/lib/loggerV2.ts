@@ -11,6 +11,7 @@ class LoggerV2 {
   //Added for now to check for duplicate init
   azureLoggingEnabled: boolean = false;
   consoleLoggingEnabled: boolean = false;
+  transports: ILoggingTransport[];
 
   constructor() {
     this.transports = [];
@@ -65,9 +66,6 @@ class LoggerV2 {
     this.transports.push(new ConsoleTransport());
     this.consoleLoggingEnabled = true;
   };
-
-  headers: HeadersInit;
-  transports: ILoggingTransport[];
 
   logMessage = (payload: MessagePayload) => {
     this.transports.forEach((transport) => {
