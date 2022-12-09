@@ -1,6 +1,6 @@
 {
   "name": "@galleondao/logging-lib",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "typescript logging library for application",
   "main": "./build/cjs/index.js",
   "types": "./build/cjs/index.d.ts",
@@ -66,5 +66,8 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "guid-typescript": "^1.0.9"
   }
 }
